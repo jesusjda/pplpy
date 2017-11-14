@@ -2149,6 +2149,23 @@ cdef class Polyhedron(object):
         finally:
             sig_off()
 
+    def remove_space_dimensions(self, Variables_Set vars_set):
+        r"""
+        Removes all the specified dimensions from the vector space.
+
+        OUTPUT:
+
+        This method modifies ``self`` and does not return anything.
+
+        Raises a ``ValueError`` if ``self`` is dimension-incompatible
+        with one of the Variable objects contained in ``vars_set``.
+        """
+        sig_on()
+        try:
+            self.thisptr.remove_space_dimensions(vars_set.thisptr[0])
+        finally:
+            sig_off()
+
     def remove_higher_space_dimensions(self, new_dimension):
         r"""
         Remove the higher dimensions of the vector space so that the
