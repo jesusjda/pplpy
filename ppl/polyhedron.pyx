@@ -2199,6 +2199,16 @@ cdef class Polyhedron(object):
             self.thisptr.remove_higher_space_dimensions(new_dimension)
         finally:
             sig_off()
+    
+    def expand_space_dimension(self, Variable var, m):
+        r"""
+        """
+        m = int(m)
+        sig_on()
+        try:
+            self.thisptr.expand_space_dimension(var.thisptr[0], m)
+        finally:
+            sig_off()
 
     def affine_image(self, Variable v, Linear_Expression le):
         r"""
